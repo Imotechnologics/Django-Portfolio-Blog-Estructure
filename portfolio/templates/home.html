@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+
+<header class="row bg-black">
+    <div class="col-md-4">
+        <img src="{%static 'portfolio/profile.png'%}">
+    </div>
+
+    <div class="col-md-8 my-auto">
+        <h1>My Name is <strong>Alan Garza</strong></h1>
+        <h2>I am a Python FullStack Developer</h2>
+        <p>Maecenas maximus arcu eu est porttitor, id tristique libero tempor. Duis et consequat enim. Nunc eget ultrices metus, eget aliquet ex. Nam ante augue, facilisis eu metus nec, ornare pulvinar turpis. Proin commodo vehicula mi, non aliquam sem. Suspendisse accumsan condimentum nunc in pulvinar. Curabitur euismod commodo lectus eget aliquam. Nam ultrices ornare lacus, non condimentum est porttitor in. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed facilisis, libero ut ornare dictum, lacus lorem aliquam velit, non consectetur purus orci quis erat. Vivamus eget ante dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices dapibus lorem, sed pulvinar risus. Pellentesque nec risus sagittis, ultrices dolor eu, maximus velit. Nunc mattis, urna eu finibus eleifend, arcu metus pharetra risus, ac placerat nisl augue rhoncus odio. Aliquam ligula lacus, rutrum vitae ante at, accumsan consectetur massa.</p>
+    
+    <a href="{% static 'portfolio/pandas.pdf'%}" class="btn btn-primary btn-lg rounded-0 my-3">Download Cv</a>
+    
+    </div>
+</header>
+
+<div class="row my-4 text-center">
+    <h3>My Projects</h3>
+    <p>Maecenas maximus arcu eu est porttitor, id tristique libero tempor. Duis et consequat enim. Nunc eget ultrices metus, eget aliquet ex.</p>
+    {% for project in projects %}
+        <div class="col-md-4 p-4">
+            <div class="card bg-black card-project">
+                <img src="{{project.image.url}}" alt="{{project.title}}" class="card-img-top" />
+                <div class="card-body">
+
+                    <h2>{{project.title}}</h2>
+                    <p>{{project.description}}</p>
+
+                    {% if project.url %}
+
+                        <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm">{{project.url}}</a>
+                        
+                    {% endif %}
+                
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
